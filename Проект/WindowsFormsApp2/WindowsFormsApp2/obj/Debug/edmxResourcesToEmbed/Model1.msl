@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ws28ModelContainer" CdmEntityContainer="ws28Entities">
+    <EntitySetMapping Name="Vxod">
+      <EntityTypeMapping TypeName="ws28Model.Vxod">
+        <MappingFragment StoreEntitySet="Vxod">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tv">
+      <EntityTypeMapping TypeName="ws28Model.tv">
+        <MappingFragment StoreEntitySet="tv">
+          <ScalarProperty Name="Id_Ya" ColumnName="Id_Ya" />
+          <ScalarProperty Name="Id_Type" ColumnName="Id_Type" />
+          <ScalarProperty Name="Glubina" ColumnName="Glubina" />
+          <ScalarProperty Name="Shirina" ColumnName="Shirina" />
+          <ScalarProperty Name="Visota" ColumnName="Visota" />
+          <ScalarProperty Name="Harki" ColumnName="Harki" />
+          <ScalarProperty Name="Brend" ColumnName="Brend" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="Nazv" ColumnName="Nazv" />
+          <ScalarProperty Name="Id_t" ColumnName="Id_t" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ty">
+      <EntityTypeMapping TypeName="ws28Model.Ty">
+        <MappingFragment StoreEntitySet="Ty">
+          <ScalarProperty Name="ID_Ty" ColumnName="ID_Ty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yac">
+      <EntityTypeMapping TypeName="ws28Model.Yac">
+        <MappingFragment StoreEntitySet="Yac">
+          <ScalarProperty Name="Glubina" ColumnName="Glubina" />
+          <ScalarProperty Name="Shirina" ColumnName="Shirina" />
+          <ScalarProperty Name="Visota" ColumnName="Visota" />
+          <ScalarProperty Name="ID_Ya" ColumnName="ID_Ya" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

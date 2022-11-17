@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ws28Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tv">
+    <Key>
+      <PropertyRef Name="Id_t" />
+    </Key>
+    <Property Name="Id_t" Type="int" Nullable="false" />
+    <Property Name="Nazv" Type="varchar" MaxLength="40" />
+    <Property Name="Cena" Type="varchar" MaxLength="40" />
+    <Property Name="Brend" Type="varchar" MaxLength="40" />
+    <Property Name="Harki" Type="varchar" MaxLength="40" />
+    <Property Name="Visota" Type="varchar" MaxLength="40" />
+    <Property Name="Shirina" Type="varchar" MaxLength="40" />
+    <Property Name="Glubina" Type="varchar" MaxLength="40" />
+    <Property Name="Id_Type" Type="int" />
+    <Property Name="Id_Ya" Type="int" />
+  </EntityType>
+  <EntityType Name="Ty">
+    <Key>
+      <PropertyRef Name="ID_Ty" />
+    </Key>
+    <Property Name="ID_Ty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vxod">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Login" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="10" />
+    <Property Name="Role" Type="int" />
+  </EntityType>
+  <EntityType Name="Yac">
+    <Key>
+      <PropertyRef Name="ID_Ya" />
+    </Key>
+    <Property Name="ID_Ya" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Visota" Type="varchar" MaxLength="40" />
+    <Property Name="Shirina" Type="varchar" MaxLength="40" />
+    <Property Name="Glubina" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <Association Name="FK__tv__Id_Type__3F6663D5">
+    <End Role="Yac" Type="Self.Yac" Multiplicity="0..1" />
+    <End Role="tv" Type="Self.tv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yac">
+        <PropertyRef Name="ID_Ya" />
+      </Principal>
+      <Dependent Role="tv">
+        <PropertyRef Name="Id_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tv__Id_Ya__405A880E">
+    <End Role="Ty" Type="Self.Ty" Multiplicity="0..1" />
+    <End Role="tv" Type="Self.tv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ty">
+        <PropertyRef Name="ID_Ty" />
+      </Principal>
+      <Dependent Role="tv">
+        <PropertyRef Name="Id_Ya" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ws28ModelContainer">
+    <EntitySet Name="tv" EntityType="Self.tv" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ty" EntityType="Self.Ty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vxod" EntityType="Self.Vxod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yac" EntityType="Self.Yac" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tv__Id_Type__3F6663D5" Association="Self.FK__tv__Id_Type__3F6663D5">
+      <End Role="Yac" EntitySet="Yac" />
+      <End Role="tv" EntitySet="tv" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tv__Id_Ya__405A880E" Association="Self.FK__tv__Id_Ya__405A880E">
+      <End Role="Ty" EntitySet="Ty" />
+      <End Role="tv" EntitySet="tv" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

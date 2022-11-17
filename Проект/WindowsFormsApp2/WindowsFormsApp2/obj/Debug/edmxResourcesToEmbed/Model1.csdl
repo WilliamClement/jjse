@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ws28Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Vxod">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Role" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="ws28Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Vxod" EntityType="Self.Vxod" />
+    <EntitySet Name="tv" EntityType="ws28Model.tv" />
+    <EntitySet Name="Ty" EntityType="ws28Model.Ty" />
+    <EntitySet Name="Yac" EntityType="ws28Model.Yac" />
+    <AssociationSet Name="FK__tv__Id_Type__3F6663D5" Association="ws28Model.FK__tv__Id_Type__3F6663D5">
+      <End Role="Yac" EntitySet="Yac" />
+      <End Role="tv" EntitySet="tv" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tv__Id_Ya__405A880E" Association="ws28Model.FK__tv__Id_Ya__405A880E">
+      <End Role="Ty" EntitySet="Ty" />
+      <End Role="tv" EntitySet="tv" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tv">
+    <Key>
+      <PropertyRef Name="Id_t" />
+    </Key>
+    <Property Name="Id_t" Type="Int32" Nullable="false" />
+    <Property Name="Nazv" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Cena" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Brend" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Harki" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Visota" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Shirina" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Glubina" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Type" Type="Int32" />
+    <Property Name="Id_Ya" Type="Int32" />
+    <NavigationProperty Name="Yac" Relationship="ws28Model.FK__tv__Id_Type__3F6663D5" FromRole="tv" ToRole="Yac" />
+    <NavigationProperty Name="Ty" Relationship="ws28Model.FK__tv__Id_Ya__405A880E" FromRole="tv" ToRole="Ty" />
+  </EntityType>
+  <EntityType Name="Ty">
+    <Key>
+      <PropertyRef Name="ID_Ty" />
+    </Key>
+    <Property Name="ID_Ty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="tv" Relationship="ws28Model.FK__tv__Id_Ya__405A880E" FromRole="Ty" ToRole="tv" />
+  </EntityType>
+  <EntityType Name="Yac">
+    <Key>
+      <PropertyRef Name="ID_Ya" />
+    </Key>
+    <Property Name="ID_Ya" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Visota" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Shirina" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Glubina" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tv" Relationship="ws28Model.FK__tv__Id_Type__3F6663D5" FromRole="Yac" ToRole="tv" />
+  </EntityType>
+  <Association Name="FK__tv__Id_Type__3F6663D5">
+    <End Type="ws28Model.Yac" Role="Yac" Multiplicity="0..1" />
+    <End Type="ws28Model.tv" Role="tv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yac">
+        <PropertyRef Name="ID_Ya" />
+      </Principal>
+      <Dependent Role="tv">
+        <PropertyRef Name="Id_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tv__Id_Ya__405A880E">
+    <End Type="ws28Model.Ty" Role="Ty" Multiplicity="0..1" />
+    <End Type="ws28Model.tv" Role="tv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ty">
+        <PropertyRef Name="ID_Ty" />
+      </Principal>
+      <Dependent Role="tv">
+        <PropertyRef Name="Id_Ya" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
